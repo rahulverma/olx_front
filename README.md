@@ -1,6 +1,6 @@
 Olx Scraper
 =========
-Frontend for the data collected with scrap_olx.
+Frontend for the data collected with [scrap_olx].
 Its build to be responsive to every screen size.
 
 Installation
