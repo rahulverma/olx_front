@@ -25,10 +25,6 @@ Mobile
 ![Mobile View][mobile]
 
 
-
-
-For visualizing the data there is [olx_front].
-
 License
 ----
 
