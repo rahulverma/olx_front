@@ -1,4 +1,42 @@
-olx_front
+Olx Scraper
 =========
+Frontend for the data collected with scrap_olx.
+Its build to be responsive to every screen size.
 
-How it should be!
+Installation
+--------------
+Needs only [flask] to be available.
+
+Running
+--------------
+
+```
+python olx_data_server.py <path to sqlite file>.
+```
+
+Desktop
+------------
+
+![Desktop View][desktop]
+
+Mobile
+------------
+
+![Mobile View][mobile]
+
+
+
+
+For visualizing the data there is [olx_front].
+
+License
+----
+
+LGPL
+
+
+[scrap_olx]:https://github.com/rahulverma/scrap_olx
+[flask]:http://flask.pocoo.org/
+
+[desktop]: examples/desktop-screenshot.jpg  "Desktop View"
+[mobile]: examples/mobile-screenshot.jpg "Mobile View"
