@@ -1,0 +1,100 @@
+table .otherdetail td {
+    height: 1px;
+}
+
+table tbody td {
+    min-width: 150px;
+}
+
+.graph {
+    height: 40px;
+    width: 140px;
+    background-color: #eaeaea;
+}
+
+.graph div {
+    width: 3px;
+    margin: 0.5px;
+    display: inline-block;
+    background-color: #aeaeae;
+    vertical-align: baseline;
+
+}
+
+body {
+    padding-top: 140px;
+}
+
+table .btn-link {
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+div.row a.btn-link {
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+
+
+
+
+.slides {
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+}
+
+.slides img {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    position: absolute;
+}
+
+.slides .img-container img {
+    opacity: 0;
+}
+
+
+.slides input {
+    display: none;
+}
+
+.img-container label {
+    position: absolute;
+    height: 100%;
+    display: none;
+    width: 40%;
+    font-size: 60pt;
+    top: 0;
+    cursor: pointer;
+    z-index: 9;
+    opacity: 0.2;
+}
+
+input:checked + div.img-container label {
+    display: block;
+}
+
+input:checked + div.img-container img {
+    opacity: 1;
+}
+
+
+
+.slides .prev {
+    left: 0;
+    text-align: left;
+}
+
+.slides .next {
+    right: 0;
+    text-align: right;
+}
+
+div.img-container label:hover { opacity: 1; }

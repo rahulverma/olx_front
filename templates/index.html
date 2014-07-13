@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Olx Items</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='gallery.theme.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='gallery.min.css') }}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <form class="navbar-form navbar-left" role="search" method="get" action="/search">
+            <div class="form-group">
+                <input type="text" name="key" class="form-control" placeholder="Search" autocomplete="on" autofocus autosave {% if key is defined %} value="{{ key }}" {% endif %}>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+            <input type="checkbox" name="regex"> Regex
+        </form>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    {% for item in items %}
+    {% set outer_loop = loop %}
+    <div class="row">
+        {% if item.image|length > 0 %}
+        <div class="col-md-2">
+            <div class="slides">
+                <label style="display: block; opacity: 0; height: 220px; width: 220px;"></label>
+                {% if item.image|length == 1 %}
+                <img src="{{ item.image.lnk }}">
+                {% else %}
+                {% for img in item.image %}
+                <input type="radio" name="radio-btn-{{ outer_loop.index }}" id="img-{{ outer_loop.index * 100 + loop.index }}" {% if loop.index == 1 %} checked {% endif %} />
+                <div class="img-container">
+                    <img src="{{ img.lnk }}">
+                    <label for="img-{{ outer_loop.index * 100 + img.left }}" class="prev">&#x2039;</label>
+                    <label for="img-{{ outer_loop.index * 100 + img.right }}" class="next">&#x203a;</label>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="col-md-2"><a href="http://newdelhi.olx.in/{{ item.url }}" class="btn btn-link" role="button">{{ item.title }}</a></div>
+        {% if item.image|length > 0 %}
+        <div class="col-md-6">
+        {% else %}
+        <div class="col-md-8">
+        {% endif %}
+            {% for line in item.desc.splitlines() %}{{line}}<br>{% endfor %}</div>
+        <div class="col-md-2">
+            <ul class="list-group">
+                <li class="list-group-item">₹{{ item.price }}</li>
+                <li class="list-group-item">{{ item.time }}</li>
+                <li class="list-group-item"><a href="/phone/{{ item.phone }}" type="button" class="btn btn-link">{{ item.phone }}</a></li>
+                <li class="list-group-item">{{ item.name }}</li>
+                {% if item.chart|length > 0 %}
+                <li class="list-group-item">
+                    max per day: {{ item.max }}
+                    <div class="graph">{% for length in item.chart %}<div style="height: {{ length }}%;"></div>{% endfor %}</div>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
